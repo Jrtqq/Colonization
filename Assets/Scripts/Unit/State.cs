@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Behaviour
+public abstract class State
 {
     protected Unit Unit;
-    protected UnitBehaviourData Data;
+    protected UnitStateData Data;
     protected IStateSwitcher StateSwitcher;
 
-    public Behaviour(Unit unit, UnitBehaviourData data, IStateSwitcher stateSwitcher)
+    public State(Unit unit, UnitStateData data, IStateSwitcher stateSwitcher)
     {
         Unit = unit;
         Data = data;

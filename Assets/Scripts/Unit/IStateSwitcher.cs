@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IStateSwitcher
 {
-    void SwitchState<State>() where State : Behaviour;
+    void SwitchState<State>() where State : global::State;
 }

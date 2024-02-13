@@ -7,27 +7,26 @@ public class Unit : MonoBehaviour, IInitiable
 {
     public UnityAction<Box> BoxDelivered;
 
-    private UnitBehaviourManager _behaviourManager;
+    private UnitStateMachine _stateMachine;
     private Vector3 _basePosition = new(0, 0.1f, 0);
 
-    public bool IsBusy => _behaviourManager.CheckCurrentState() != typeof(Rest);
+    public bool IsBusy => _stateMachine.CheckCurrentState() != typeof(Rest);
 
     private void Awake()
     {
-        _behaviourManager ??= new UnitBehaviourManager(this, _basePosition);
+        _stateMachine ??= new UnitStateMachine(this, _basePosition);
     }
 
     private void Update()
     {
-        _behaviourManager.Update();
+        _stateMachine.Update();
 
-        Debug.Log(_behaviourManager.CheckCurrentState());
+        Debug.Log(_stateMachine.CheckCurrentState());
     }
 
     public void GoToBox(Box box)
     {
-        Debug.Log("передаю коробку в машину состояний");
-        _behaviourManager.SetBox(box);
+        _stateMachine.SetBox(box);
     }
 
     public void Init(GameObject @base, Vector3 instantiatePosition)
@@ -37,11 +36,11 @@ public class Unit : MonoBehaviour, IInitiable
         else
             baseComponent.AddUnit(this);
 
-        _behaviourManager ??= new UnitBehaviourManager(this, _basePosition);
+        _stateMachine ??= new UnitStateMachine(this, _basePosition);
         _basePosition = @base.transform.position;
 
         Instantiate(this, instantiatePosition, Quaternion.identity);
 
-        _behaviourManager.SetBasePosition(@base.transform.position);
+        _stateMachine.SetBasePosition(@base.transform.position);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 
-public class GoToBase : Behaviour
+public class GoToBase : State
 {
     private float _endDistance = 2;
 
@@ -11,7 +11,7 @@ public class GoToBase : Behaviour
     private Transform BoxTransform => Data.Box.transform;
     private Vector3 BasePosition => Data.BasePosition;
 
-    public GoToBase(Unit unit, UnitBehaviourData data, IStateSwitcher stateSwitcher) : base(unit, data, stateSwitcher) { }
+    public GoToBase(Unit unit, UnitStateData data, IStateSwitcher stateSwitcher) : base(unit, data, stateSwitcher) { }
 
     public override void Enter()
     {

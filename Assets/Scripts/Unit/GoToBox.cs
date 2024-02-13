@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class GoToBox : Behaviour
+public class GoToBox : State
 {
     private float _endDistance = 1.5f;
 
     private Vector3 UnitPosition => Unit.transform.position;
     private Vector3 BoxPosition => Data.Box.transform.position;
 
-    public GoToBox(Unit unit, UnitBehaviourData data, IStateSwitcher stateSwitcher) : base(unit, data, stateSwitcher) { }
+    public GoToBox(Unit unit, UnitStateData data, IStateSwitcher stateSwitcher) : base(unit, data, stateSwitcher) { }
 
     public override void Enter() { }
 

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class UnitBehaviourData
+public class UnitStateData
 {
     public readonly float Speed = 6;
 
     public Vector3 BasePosition;
     public Box Box = null;
 
-    public UnitBehaviourData(Vector3 basePosition) => BasePosition = basePosition;
+    public UnitStateData(Vector3 basePosition) => BasePosition = basePosition;
 }

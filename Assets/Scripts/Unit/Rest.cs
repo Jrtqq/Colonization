@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Rest : Behaviour
+public class Rest : State
 {
-    public Rest(Unit unit, UnitBehaviourData data, IStateSwitcher stateSwitcher) : base(unit, data, stateSwitcher) { }
+    public Rest(Unit unit, UnitStateData data, IStateSwitcher stateSwitcher) : base(unit, data, stateSwitcher) { }
 
     public override void Enter() { }
 
@@ -17,7 +17,6 @@ public class Rest : Behaviour
         if (Data.Box != null)
         {
             StateSwitcher.SwitchState<GoToBox>();
-            Debug.Log("пытаюсь сменить состояние");
         }
     }
 }
