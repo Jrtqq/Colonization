@@ -9,7 +9,7 @@ public class GoToBase : State
 
     private Transform UnitTransform => Unit.transform;
     private Transform BoxTransform => Data.Box.transform;
-    private Vector3 BasePosition => Data.BasePosition;
+    private Vector3 BasePosition => Unit.BasePosition;
 
     public GoToBase(Unit unit, UnitStateData data, IStateSwitcher stateSwitcher) : base(unit, data, stateSwitcher) { }
 

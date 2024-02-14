@@ -11,25 +11,23 @@ public class UnitStateMachine : IStateSwitcher
     private State _currenState;
     private UnitStateData _data;
 
-    public UnitStateMachine(Unit unit, Vector3 basePosition)
+    public UnitStateMachine(Unit unit)
     {
-        _data = new(basePosition);
+        _data = new();
 
         _states = new State[] 
         {
             new Rest(unit, _data, this),
             new GoToBox(unit, _data, this),
-            new GoToBase(unit, _data, this)
+            new GoToBase(unit, _data, this),
+            new SetNewBase(unit, _data, this)
         };
 
         _currenState = _states[0];
         _currenState.Enter();
     }
 
-    public void Update()
-    {
-        _currenState.Update();
-    }
+    public void Update() => _currenState.Update();
 
     public void SwitchState<Behaviour>() where Behaviour : global::State
     {
@@ -38,14 +36,9 @@ public class UnitStateMachine : IStateSwitcher
         _currenState.Enter();
     }
 
-    public void SetBox(Box box)
-    {
-        Debug.Log("устанавливаю коробку");
-        _data.Box = box;
-        Debug.Log(_data.Box);
-    }
+    public void SetBox(Box box) => _data.Box = box;
 
-    public void SetBasePosition(Vector3 basePosition) => _data.BasePosition = basePosition;
+    public void SetNewBasePosition(Vector3 position) => _data.NewBasePosition = position;
 
     public Type CheckCurrentState() => _currenState.GetType();
 }

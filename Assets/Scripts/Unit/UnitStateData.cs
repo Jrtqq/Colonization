@@ -7,8 +7,6 @@ public class UnitStateData
 {
     public readonly float Speed = 6;
 
-    public Vector3 BasePosition;
     public Box Box = null;
-
-    public UnitStateData(Vector3 basePosition) => BasePosition = basePosition;
+    public Vector3 NewBasePosition = Config.NullVector;
 }

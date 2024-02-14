@@ -12,11 +12,9 @@ public class Rest : State
 
     public override void Update() 
     {
-        Debug.Log(Data.Box);
-
         if (Data.Box != null)
-        {
             StateSwitcher.SwitchState<GoToBox>();
-        }
+        else if (Data.NewBasePosition != Config.NullVector)
+            StateSwitcher.SwitchState<SetNewBase>();
     }
 }
